@@ -27,20 +27,6 @@
             margin: 5px;
         }
     </style>
-    <script>
-        function getGender() {
-            var t = document.getElementById("gender");
-            var gender = ["男", "女"][parseInt(Math.random() * 11451) % 2];
-            if (gender === "男")  {
-                t.style.color = "blue";
-            } else {
-                t.style.color = "rgb(230, 81, 173)";
-            }
-            t.innerHTML = gender;
-            document.getElementById("res").style.display = "block";
-            document.getElementById("bt1").innerHTML = "再预测一下";
-        }
-    </script>
 </head>
 <body>
     <div class="content">
@@ -51,7 +37,7 @@
         </p>
         <div id="predict">
             <span class="prop">姓氏 </span><input type="text" id="name" placeholder="输入您的姓氏"> <br>
-            <span class="prop">生日 </span><input type="text" id="birthdate" placeholder="输入您的生日"> <br>
+            <span class="prop">生日 </span><input type="date" id="birthdate" placeholder="输入您的生日"> <br>
             <button type="button" id="bt1" onclick="getGender()">给我预测！</button>
         </div>
         <div id="res">
@@ -59,4 +45,30 @@
         </div>
     </div>
 </body>
+<script>
+    var lastInfo = "";
+    function getGender() {
+        var name = $("name").value;
+        var birthdate = $("birthdate").value;
+        if (lastInfo != "" && lastInfo === name + birthdate) {
+            alert("这个已经预测过了");
+            return
+        }
+        lastInfo = name + birthdate;
+        var t = document.getElementById("gender");
+        var gender = ["男", "女"][parseInt(Math.random() * 11451) % 2];
+        if (gender === "男")  {
+            t.style.color = "blue";
+        } else {
+            t.style.color = "rgb(230, 81, 173)";
+        }
+        t.innerHTML = gender;
+        document.getElementById("res").style.display = "block";
+        document.getElementById("bt1").innerHTML = "再预测一下";
+    }
+
+    function $(id) {
+        return document.getElementById(id);
+    }
+</script>
 </html>
