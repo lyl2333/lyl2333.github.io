@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>预测孩子性别</title>
     <style>
-        div#predict {
+        div.content {
+            text-align: center;
             margin: auto;
             position: relative;
             top: 20px;
@@ -29,7 +30,7 @@
     <script>
         function getGender() {
             var t = document.getElementById("gender");
-            var gender = ["男", "女"][parseInt(Math.random() * 114514) % 2];
+            var gender = ["男", "女"][parseInt(Math.random() * 11451) % 2];
             if (gender === "男")  {
                 t.style.color = "blue";
             } else {
@@ -37,11 +38,12 @@
             }
             t.innerHTML = gender;
             document.getElementById("res").style.display = "block";
+            document.getElementById("bt1").innerHTML = "再预测一下";
         }
     </script>
 </head>
 <body>
-    <div>
+    <div class="content">
         <h1 style="color: white;">输入以下信息，预测您的第一个孩子的性别</h1>
         <p>
             如果预测对了，记得打赏哦<br>
@@ -50,7 +52,7 @@
         <div id="predict">
             <span class="prop">姓氏 </span><input type="text" id="name" placeholder="输入您的姓氏"> <br>
             <span class="prop">生日 </span><input type="text" id="birthdate" placeholder="输入您的生日"> <br>
-            <button type="button" onclick="getGender()">给我预测！</button>
+            <button type="button" id="bt1" onclick="getGender()">给我预测！</button>
         </div>
         <div id="res">
             <p>您的孩子的性别为<span id="gender"></span></p>
