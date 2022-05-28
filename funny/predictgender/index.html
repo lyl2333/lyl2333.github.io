@@ -26,9 +26,15 @@
         button {
             margin: 5px;
         }
+        body>a {
+            text-decoration: none;
+            color: aquamarine;
+            font-size: x-large;
+        }
     </style>
 </head>
 <body>
+    <a href="../../index.html">回首页</a>
     <div class="content">
         <h1 style="color: white;">输入以下信息，预测您的第一个孩子的性别</h1>
         <p>
@@ -50,6 +56,10 @@
     function getGender() {
         var name = $("name").value;
         var birthdate = $("birthdate").value;
+        if (name === "" || birthdate == "") {
+            alert("请输入需要的信息!");
+            return;
+        }
         if (lastInfo != "" && lastInfo === name + birthdate) {
             alert("这个已经预测过了");
             return
