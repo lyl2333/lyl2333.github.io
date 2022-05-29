@@ -35,7 +35,7 @@ div#predict>div {
 
 div#inputkey>span {
     display: block;
-    height: 32px;
+    height: 38px;
 }
 
 input {
@@ -44,6 +44,7 @@ input {
     border-radius: 6px;
     width: 150px;
     height: 30px;
+    padding: 1px 2px;
     margin-bottom: 2px;
 }
 
