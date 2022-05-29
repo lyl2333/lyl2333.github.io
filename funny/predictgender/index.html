@@ -1,84 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>预测孩子性别</title>
-    <style>
-        div.content {
-            text-align: center;
-            margin: auto;
-            position: relative;
-            top: 20px;
-        }
-        body {
-            background-color: rgb(50, 156, 68);
-            color: white;
-        }
-        div#res {
-            display: none;
-        }
-        span#gender {
-            font-size: xx-large;
-            font-weight: bolder;
-        }
-        button {
-            margin: 5px;
-        }
-        body>a {
-            text-decoration: none;
-            color: aquamarine;
-            font-size: x-large;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/a.css">
 </head>
+
 <body>
-    <a href="../../index.html">回首页</a>
+    <a href="../../index.html" id="guide1">首页</a>
     <div class="content">
-        <h1 style="color: white;">输入以下信息，预测您的第一个孩子的性别</h1>
+        <h1>输入以下信息，预测您的第一个孩子的性别</h1>
         <p>
-            如果预测对了，记得打赏哦<br>
-            预测错了就是封建迷信，不要信
+            如果预测对了，记得打赏哦<br> 预测错了就是封建迷信，不要信
         </p>
         <div id="predict">
-            <span class="prop">姓氏 </span><input type="text" id="name" placeholder="输入您的姓氏"> <br>
-            <span class="prop">生日 </span><input type="date" id="birthdate" placeholder="输入您的生日"> <br>
-            <button type="button" id="bt1" onclick="getGender()">给我预测！</button>
+            <div id="inputkey">
+                <span class="prop">姓氏 </span>
+                <span class="prop">生日 </span>
+            </div>
+            <div id="inputvalue">
+                <input type="text" id="name" placeholder="输入您的姓氏">
+                <input type="date" id="birthdate">
+            </div>
+            <button type="button" id="bt1">预测！</button>
         </div>
         <div id="res">
             <p>您的孩子的性别为<span id="gender"></span></p>
         </div>
     </div>
 </body>
-<script>
-    var lastInfo = "";
-    function getGender() {
-        var name = $("name").value;
-        var birthdate = $("birthdate").value;
-        if (name === "" || birthdate == "") {
-            alert("请输入需要的信息!");
-            return;
-        }
-        if (lastInfo != "" && lastInfo === name + birthdate) {
-            alert("这个已经预测过了");
-            return
-        }
-        lastInfo = name + birthdate;
-        var t = document.getElementById("gender");
-        var gender = ["男", "女"][parseInt(Math.random() * 11451) % 2];
-        if (gender === "男")  {
-            t.style.color = "blue";
-        } else {
-            t.style.color = "rgb(230, 81, 173)";
-        }
-        t.innerHTML = gender;
-        document.getElementById("res").style.display = "block";
-        document.getElementById("bt1").innerHTML = "再预测一下";
-    }
+<script src="./js/logic.js"></script>
 
-    function $(id) {
-        return document.getElementById(id);
-    }
-</script>
 </html>
